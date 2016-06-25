@@ -1,0 +1,53 @@
+﻿@using IdentitySample.Models
+@model IdentitySample.Models.ClaimViewModel
+
+@{
+    ViewBag.Title = "Associar Claim";
+}
+
+<h2>Associar Claim</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>UserClaim</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
+        
+        <h4>Adicione um novo Claim para o Usuário @ViewBag.User.UserName</h4>
+        @{
+            ApplicationUser user = ViewBag.User;
+        }
+        
+        @Html.Hidden("id",user.Id)
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Type, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Type", String.Empty)
+                @Html.ValidationMessageFor(model => model.Type)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Value, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Value, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Value)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Criar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Voltar para a Lista", "Index")
+</div>

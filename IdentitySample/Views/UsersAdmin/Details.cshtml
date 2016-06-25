@@ -1,0 +1,83 @@
+﻿@using IdentitySample.Models
+@using Microsoft.AspNet.Identity.Owin
+@model IdentitySample.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes.</h2>
+
+<div>
+    <h4>Usuário</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+    </dl>
+</div>
+<h4>Lista de Roles para este usuário</h4>
+@if (ViewBag.RoleNames.Count == 0)
+{
+    <hr />
+    <p>Usuário não pertence a nenhuma Role.</p>
+}
+else
+{
+    <table class="table">
+
+        @foreach (var item in ViewBag.RoleNames)
+        {
+            <tr>
+                <td>
+                    @item
+                </td>
+            </tr>
+        }
+    </table>
+}
+
+<h4>Lista de Claims para este usuário</h4>
+
+@if (ViewBag.Claims.Count == 0)
+{
+    <hr />
+    <p>Usuário não possui nenhum Claim.</p>
+}
+else
+{
+    <table class="table">
+        <tr class="table-bordered">
+            <td>
+                <b>Nome da Claim</b>
+            </td>
+            <td>
+                <b>Valor da Claim</b>
+            </td>
+        </tr>
+
+        @foreach (var item in ViewBag.Claims)
+        {
+            <tr>
+                <td>
+                    @item.Type
+                </td>
+                <td>
+                    @item.Value
+                </td>
+            </tr>
+        }
+    </table>
+}
+
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Voltar para a lista", "Index")
+</p>
+
+
+

@@ -1,0 +1,31 @@
+﻿@model Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+
+@{
+    ViewBag.Title = "Deletar";
+}
+
+<h2>Deletar.</h2>
+
+<h3>Você tem certeza que deseja deletar esta Role? </h3>
+<p>Apagar esta Role irá remover todos os usuários desta Role. Não vai excluir os usuários.</p>
+        <div>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+            </dl>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Deletar" class="btn btn-default" /> |
+                    @Html.ActionLink("Voltar para a lista", "Index")
+                </div>
+            }
+        </div>

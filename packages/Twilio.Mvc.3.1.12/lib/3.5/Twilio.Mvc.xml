@@ -1,0 +1,234 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Twilio.Mvc</name>
+    </assembly>
+    <members>
+        <member name="T:Twilio.HttpStatusCodeResult">
+            <summary>
+            Returns an HTTP status code
+            </summary>
+        </member>
+        <member name="M:Twilio.HttpStatusCodeResult.#ctor(System.Net.HttpStatusCode)">
+            <summary>
+            Creates a new instance of the class with a specific status code
+            </summary>
+            <param name="statusCode">The status code to return</param>
+        </member>
+        <member name="P:Twilio.HttpStatusCodeResult.StatusCode">
+            <summary>
+            Gets the status code for this instance
+            </summary>
+        </member>
+        <member name="T:Twilio.Mvc.SmsRequest">
+            <summary>
+            This class can be used as the parameter on your SMS action. Incoming parameters will be bound here.
+            </summary>
+            <remarks>http://www.twilio.com/docs/api/twiml/sms/twilio_request</remarks>
+        </member>
+        <member name="T:Twilio.Mvc.TwilioRequest">
+            <summary>
+            Base class for mapping incoming request parameters into a strongly typed object
+            </summary>
+        </member>
+        <member name="P:Twilio.Mvc.TwilioRequest.AccountSid">
+            <summary>
+            Your Twilio account id. It is 34 characters long, and always starts with the letters AC
+            </summary>
+        </member>
+        <member name="P:Twilio.Mvc.TwilioRequest.From">
+            <summary>
+            The phone number or client identifier of the party that initiated the call
+            </summary>
+            <remarks>
+            Phone numbers are formatted with a '+' and country code, e.g. +16175551212 (E.164 format). Client identifiers begin with the client: URI scheme; for example, for a call from a client named 'tommy', the From parameter will be client:tommy.
+            </remarks>
+        </member>
+        <member name="P:Twilio.Mvc.TwilioRequest.To">
+            <summary>
+            The phone number or client identifier of the called party
+            </summary>
+            <remarks>
+            Phone numbers are formatted with a '+' and country code, e.g. +16175551212 (E.164 format). Client identifiers begin with the client: URI scheme; for example, for a call to a client named 'jenny', the To parameter will be client:jenny.
+            </remarks>
+        </member>
+        <member name="P:Twilio.Mvc.TwilioRequest.FromCity">
+            <summary>
+            The city of the caller
+            </summary>
+        </member>
+        <member name="P:Twilio.Mvc.TwilioRequest.FromState">
+            <summary>
+            The state or province of the caller
+            </summary>
+        </member>
+        <member name="P:Twilio.Mvc.TwilioRequest.FromZip">
+            <summary>
+            The postal code of the caller
+            </summary>
+        </member>
+        <member name="P:Twilio.Mvc.TwilioRequest.FromCountry">
+            <summary>
+            The country of the caller
+            </summary>
+        </member>
+        <member name="P:Twilio.Mvc.TwilioRequest.ToCity">
+            <summary>
+            The city of the called party
+            </summary>
+        </member>
+        <member name="P:Twilio.Mvc.TwilioRequest.ToState">
+            <summary>
+            The state or province of the called party
+            </summary>
+        </member>
+        <member name="P:Twilio.Mvc.TwilioRequest.ToZip">
+            <summary>
+            The postal code of the called party
+            </summary>
+        </member>
+        <member name="P:Twilio.Mvc.TwilioRequest.ToCountry">
+            <summary>
+            The country of the called party
+            </summary>
+        </member>
+        <member name="P:Twilio.Mvc.SmsRequest.SmsSid">
+            <summary>
+            A 34 character unique identifier for the message. May be used to later retrieve this message from the REST API
+            </summary>
+        </member>
+        <member name="P:Twilio.Mvc.SmsRequest.Body">
+            <summary>
+            The text body of the SMS message. Up to 160 characters long
+            </summary>
+        </member>
+        <member name="T:Twilio.Mvc.StatusCallbackRequest">
+            <summary>
+            This class can be used as the parameter on your StatusCallback action. Incoming parameters will be bound here.
+            </summary>
+            <remarks>http://www.twilio.com/docs/api/twiml/twilio_request</remarks>
+        </member>
+        <member name="T:Twilio.Mvc.VoiceRequest">
+            <summary>
+            This class can be used as the parameter on your voice action. Incoming parameters will be bound here.
+            </summary>
+            <remarks>http://www.twilio.com/docs/api/twiml/twilio_request</remarks>
+        </member>
+        <member name="P:Twilio.Mvc.VoiceRequest.CallSid">
+            <summary>
+            A unique identifier for this call, generated by Twilio
+            </summary>
+        </member>
+        <member name="P:Twilio.Mvc.VoiceRequest.CallStatus">
+            <summary>
+            A descriptive status for the call. The value is one of queued, ringing, in-progress, completed, busy, failed or no-answer
+            </summary>
+        </member>
+        <member name="P:Twilio.Mvc.VoiceRequest.ApiVersion">
+            <summary>
+            The version of the Twilio API used to handle this call. For incoming calls, this is determined by the API version set on the called number. For outgoing calls, this is the API version used by the outgoing call's REST API request
+            </summary>
+        </member>
+        <member name="P:Twilio.Mvc.VoiceRequest.Direction">
+            <summary>
+            Indicates the direction of the call. In most cases this will be inbound, but if you are using Dial it will be outbound-dial
+            </summary>
+        </member>
+        <member name="P:Twilio.Mvc.VoiceRequest.ForwardedFrom">
+            <summary>
+            This parameter is set only when Twilio receives a forwarded call, but its value depends on the caller's carrier including information when forwarding. Not all carriers support passing this information
+            </summary>
+        </member>
+        <member name="P:Twilio.Mvc.VoiceRequest.CallerName">
+            <summary>
+            This parameter is set when the IncomingPhoneNumber that received the call has had its VoiceCallerIdLookup value set to true.
+            </summary>
+        </member>
+        <member name="P:Twilio.Mvc.VoiceRequest.Digits">
+            <summary>
+            When used with the Gather verb, the digits the caller pressed, excluding the finishOnKey digit if used.  
+            When used with the Record verb, the key (if any) pressed to end the recording or 'hangup' if the caller hung up
+            </summary>
+        </member>
+        <member name="P:Twilio.Mvc.VoiceRequest.RecordingUrl">
+            <summary>
+            The URL of the recorded audio.  When the result of a transcription, the URL for the transcription's source recording resource.
+            </summary>
+        </member>
+        <member name="P:Twilio.Mvc.VoiceRequest.RecordingDuration">
+            <summary>
+            The duration of the recorded audio (in seconds)
+            </summary>
+        </member>
+        <member name="P:Twilio.Mvc.VoiceRequest.TranscriptionSid">
+            <summary>
+            The unique 34 character ID of the transcription
+            </summary>
+        </member>
+        <member name="P:Twilio.Mvc.VoiceRequest.TranscriptionText">
+            <summary>
+            Contains the text of the transcription
+            </summary>
+        </member>
+        <member name="P:Twilio.Mvc.VoiceRequest.TranscriptionStatus">
+            <summary>
+            The status of the transcription attempt: either 'completed' or 'failed'
+            </summary>
+        </member>
+        <member name="P:Twilio.Mvc.VoiceRequest.TranscriptionUrl">
+            <summary>
+            The URL for the transcription's REST API resource
+            </summary>
+        </member>
+        <member name="P:Twilio.Mvc.VoiceRequest.RecordingSid">
+            <summary>
+            The unique 34 character ID of the recording from which the transcription was generated
+            </summary>
+        </member>
+        <member name="P:Twilio.Mvc.VoiceRequest.DialCallStatus">
+            <summary>
+            The outcome of the Dial attempt. See the DialCallStatus section below for details
+            </summary>
+        </member>
+        <member name="P:Twilio.Mvc.VoiceRequest.DialCallSid">
+            <summary>
+            The call sid of the new call leg. This parameter is not sent after dialing a conference
+            </summary>
+        </member>
+        <member name="P:Twilio.Mvc.VoiceRequest.DialCallDuration">
+            <summary>
+            The duration in seconds of the dialed call. This parameter is not sent after dialing a conference
+            </summary>
+        </member>
+        <member name="T:Twilio.TwiML.Mvc.TwilioController">
+            <summary>
+            Extends the standard base controller to simplify returning a TwiML response
+            </summary>
+        </member>
+        <member name="M:Twilio.TwiML.Mvc.TwilioController.TwiML(Twilio.TwiML.TwilioResponse)">
+            <summary>
+            Returns a property formatted TwiML response
+            </summary>
+            <param name="response"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Twilio.TwiML.Mvc.ValidateRequestAttribute">
+            <summary>
+            Represents an attribute that is used to prevent forgery of a request.
+            </summary>
+        </member>
+        <member name="M:Twilio.TwiML.Mvc.ValidateRequestAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the ValidateRequestAttribute class.
+            </summary>
+            <param name="authToken"></param>
+        </member>
+        <member name="M:Twilio.TwiML.Mvc.ValidateRequestAttribute.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the ValidateRequestAttribute class.
+            </summary>
+            <param name="authToken"></param>
+            <param name="urlOverride"></param>
+        </member>
+    </members>
+</doc>

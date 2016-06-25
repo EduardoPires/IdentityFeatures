@@ -1,0 +1,66 @@
+﻿﻿@using Owin;
+@using IdentitySample.Identity
+@using Microsoft.AspNet.Identity;
+@using Microsoft.AspNet.Identity.Owin;
+@{
+    ViewBag.Title = "Sair";
+}
+
+<h2>Sair</h2>
+
+<div class="row">
+    @if (Request.IsAuthenticated)
+    {
+        using (Html.BeginForm("SignOutEverywhere", "Account", FormMethod.Post, new { id = "signOutEverywhereForm" }))
+        {
+            @Html.AntiForgeryToken();
+            <input type="submit" value="Sair de Todos os Lugares" class="btn btn-default" />
+        }
+    }
+
+</div>
+<div>
+    <br/><br/>
+</div>
+<div class="row">
+    @if (Request.IsAuthenticated)
+    {
+        var manager = Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
+        var user = manager.FindById(User.Identity.GetUserId());
+        using (Html.BeginForm("SignOutClient", "Account", FormMethod.Post, new { id = "signOutClientForm" }))
+        {
+            @Html.AntiForgeryToken();
+            <input type="hidden" id="clientId" name="clientId" />
+        }
+        <table>
+            <tr>
+                <th>
+                    Cliente(s) Conectado(s)
+                </th>
+                <th></th>
+            </tr>
+            @foreach (var client in user.Clients)
+            {
+                <tr>
+                    <td>
+                        @client.ClientKey
+                    </td>
+                    <td>
+                        <input type="button" value="Sair" onclick="SignOutClient(@client.Id);" class="btn btn-default">
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+       function SignOutClient(clientId)
+       {
+           $("#clientId").val(clientId);
+           $("#signOutClientForm").submit();
+       }
+    </script>
+}
+
